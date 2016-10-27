@@ -1,8 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const Telegram = require('node-telegram-bot-api');
+const ua = require('universal-analytics');
 const bot = require('./bot');
 
+const visitor = ua(process.env.UA || 'UA-XXX');
 const token = process.env.NODE_BOT_TOKEN || '***';
 const port = process.env.PORT || 8888;
 const app = express();
@@ -34,6 +36,7 @@ function init(token){
 
 	telegram.on('message',(msg)=>{
 		bot.processMessage(telegram,msg);
+		visitor.event("Telegram", "explainShell", msg.from.username, msg.text).send()
 	});
 	return telegram;
 }
