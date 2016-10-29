@@ -4,13 +4,13 @@
   "description": "telegram-bot-motd",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha *.spec.js",
     "start": "node index.js"
   },
   "keywords": [
     "Telegram",
     "Bot",
-    "Advise"
+    "explain shell"
   ],
   "author": "Mikhail Angelov",
   "license": "ISC",
@@ -21,5 +21,9 @@
     "node-telegram-bot-api": "^0.24.0",
     "request": "^2.74.0",
     "universal-analytics": "^0.4.6"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.0.1"
   }
 }
